@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+{% block title %}Options du compte{% endblock %}
+
+
+{% block body %}
+
+    {# Menu #}
+    {% include '_partials/_main_profil_slidebar.html.twig' %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div id="main">
+
+                <div class="row">
+                    <h1 class="col-12 text-center my-5 text-danger">Modifier vos informations personnelles</h1>
+                </div>
+
+                {# Link to change password  #}
+                <div class="row">
+                    <nav class="col-11 offset-1 d-flex flex-column align-items-center pb-5 col-lg-11 offset-lg-1 profil-link-parameter">
+
+                        <a href="{{ path('main_profils_parameter_edit_password') }}" class="d-flex align-items-center">
+                            <i class="mb-3 me-2 fa-solid fa-key"></i>
+                            <h3>Modifier votre mot de passe</h3>
+                        </a>
+
+                        <a href="{{ path('main_profils_parameter_edit_picture') }}" class="d-flex align-items-center">
+                            <i class="mb-3 me-2 fa-solid fa-camera-retro"></i>
+                            <h3>Modifier votre photo de profil</h3>
+                        </a>
+
+                    </nav>
+
+                </div>
+
+                {# Edit profil form #}
+                <div class="row">
+
+                    {{ form_start( profilForm ) }}
+                    {{ form_errors( profilForm ) }}
+
+                    <div class="col-10 offset-1 py-3 col-lg-11 offset-lg-1 profil-parameter-separator d-lg-flex">
+
+                        <h3 class="col-lg-5">Votre pseudonyme</h3>
+
+                        <div class="col-lg-7">{{ form_row( profilForm.pseudonym ) }}</div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-10 offset-1 py-3 col-lg-11 offset-lg-1 profil-parameter-separator d-lg-flex">
+
+                        <h3 class="col-lg-5">Votre email</h3>
+
+                        <div class="col-lg-7">{{ form_row( profilForm.email ) }}</div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-10 offset-1 py-3 col-lg-11 offset-lg-1 profil-parameter-separator d-lg-flex">
+
+                        <h3 class="col-lg-5">Votre date de naissance</h3>
+
+                        <div class="col-lg-7">{{ form_row( profilForm.birthDate ) }}</div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-10 offset-1 py-3 col-lg-11 offset-lg-1 d-lg-flex">
+
+                        <h3 class="col-lg-5">Votre biographie</h3>
+
+                        <div class="col-lg-7">{{ form_row( profilForm.biography ) }}</div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-10 offset-1 py-3">
+
+                        <div>{{ form_row( profilForm.save ) }}</div>
+                        {{ form_end( profilForm ) }}
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+

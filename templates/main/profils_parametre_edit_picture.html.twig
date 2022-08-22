@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    {# Menu #}
+    {% include '_partials/_main_profil_slidebar.html.twig' %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div id="main">
+
+                <div class="row">
+                    <h1 class="col-12 text-center my-5 text-danger">Modifier votre photo de profil</h1>
+                </div>
+
+                <div class="row">
+                    {# Photo #}
+                    <div class="profil-user-picture col-6 offset-3 pb-3 pb-md-4 col-lg-4 offset-lg-4 col-xl-4 offset-xl-2 mx-auto">
+
+                        {% if app.user.pictureProfil is null %}
+
+                            <img src="{{ asset('images/profil-default.jpg') }}" alt="" class="img-fluid img-thumbnail">
+
+                        {% else %}
+
+                            <img src="{{ asset('images/profils/' ~ app.user.pictureProfil) }}" alt="" class="img-fluid img-thumbnail">
+
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-10 offset-1 py-3 col-xl-8 offset-xl-2">
+                        {{ form_start( editPictureForm ) }}
+                        {{ form_errors( editPictureForm.pictureProfil ) }}
+
+                        {{ form_row( editPictureForm.pictureProfil ) }}
+
+                        {{ form_row( editPictureForm.save ) }}
+                        {{ form_end( editPictureForm ) }}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+

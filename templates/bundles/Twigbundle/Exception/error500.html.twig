@@ -1,0 +1,17 @@
+{% extends "base.html.twig"  %}
+
+{%block title%}Erreur 500 : problème de serveur {%endblock%}
+
+{%block body%}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+
+                <video src=" {{asset('videos/500.mp4')}} " autoplay muted poster="{{asset('images/500.png')}}" class="img-fluid my-3" ></video>
+
+            </div>
+        </div>
+    </div>
+
+{%endblock%}

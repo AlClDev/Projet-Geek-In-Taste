@@ -1,0 +1,17 @@
+{% extends "base.html.twig"  %}
+
+{%block title%}Erreur 403 : accès interdit {%endblock%}
+
+{%block body%}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+
+                <video src=" {{asset('videos/403.mp4')}} " autoplay muted poster="{{asset('images/403.png')}}" class="img-fluid my-3" ></video>
+
+            </div>
+        </div>
+    </div>
+
+{%endblock%}

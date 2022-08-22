@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes{% endblock %}
+
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <h1 class="col-12 text-center my-5">Recettes</h1>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 col-md-8 mx-auto">
+
+                <div class="row">
+                    <p class="col-12 text-center">Nombre total de recettes : {{ recipes.getTotalItemCount() }}</p>
+                </div>
+
+                {% if recipes is not empty %}
+
+                    <div class="row">
+
+                        <div class="col-12 my-3 text-center">
+
+                            <div class="d-inline-block">
+                                {{ knp_pagination_render(recipes) }}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+                    <div class="row">
+
+                        {% for recipe in recipes %}
+                        <div class="col-12 col-md-6 col-lg-4">
+
+                            <div id="card-recipe" class="card my-4">
+
+                                <div class="card-header">
+                                    <a href="{{ path('recipe_view', {'id': recipe.id, 'slug': recipe.slug}) }}" class="text-decoration-none title-of-recipe recip-list-style-text">
+                                        {{ recipe.title }}
+                                    </a>
+                                </div>
+
+                                <div class="card-body">
+
+                                    <div class="mb-4">
+                                        <p class="text-center" id="note-of-author">{{ recipe.content }}</p>
+                                        <div id="image">
+                                            <img class="img-fluid" src="{{ asset('images/recettes/' ~ recipe.image )|imagine_filter('recipe_list') }}" id="recipe_list_image" alt="">
+                                        </div>
+                                        <a class="text-decoration-none lire-la-suite" href="{{ path('recipe_view', {'id': recipe.id, 'slug': recipe.slug}) }}">Voir la recette</a>
+
+                                    </div>
+
+                                    <footer class="my-4 publie-le">Publié le <strong>{{ recipe.publicationDate|date('d/m/Y') }}</strong> par <strong>{{ recipe.author.pseudonym }}</strong></footer>
+
+                                    {% if (is_granted('ROLE_ADMIN')) or (recipe.author == app.user) %}
+
+                                        <div class="text-center">
+
+                                            <a href="{{ path('recipe_edit', {'id': recipe.id}) }}" class="me-3 text-decoration-none btn btn-outline-warning px-2" id="edit-recipe">Modifier</a>
+
+                                            <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ?')" href="{{ path('recipe_delete', {'id': recipe.id, 'csrf_token' : csrf_token('recipe_delete' ~ recipe.id)}) }}" class="text-decoration-none btn btn-outline-danger" id="delete-recipe">Supprimer</a>
+
+                                        </div>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {% else %}
+
+                    </div>
+
+                    <div class="row">
+                        <p class="col-12 text-center alert alert-warning">Aucune recette à afficher.</p>
+                    </div>
+
+                {% endfor %}
+
+                {% if recipes is not empty %}
+
+                    <div class="row">
+
+                        <div class="col-12 my-3 text-center">
+
+                            <div class="d-inline-block">
+                                {{ knp_pagination_render(recipes) }}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

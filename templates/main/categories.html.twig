@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %}Catégories{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row w-100 d-flex justify-content-center">
+
+            <div class=" col-10 my-3 col-md-5  my-md-5 text-center">
+                <div class="py-1 catégories-zoom-style">
+
+                    <a href="/recettes/categories/1/" class="category-style-h3" >
+
+                            <img class="img-fluid" src="{{ asset('images/cat_chaudron.png') }}" alt="chaudron">
+                            <h3 class="text-center my-3">Entrée</h3>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-10 my-3 col-md-5 my-md-5 text-center">
+                <div class="py-1 catégories-zoom-style">
+
+                    <a href="/recettes/categories/2/" class="category-style-h3" >
+
+                            <img class="img-fluid" src="{{ asset('images/cat_plat.png') }}" alt="chaudron">
+                            <h3 class="text-center my-3">Plat</h3>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-10 my-3 col-md-5  my-md-5 text-center">
+                <div class="py-1 catégories-zoom-style">
+
+                    <a href="/recettes/categories/3/" class="category-style-h3" >
+
+                        <img class="img-fluid" src="{{ asset('images/cat_donut.png') }}" alt="chaudron">
+                        <h3 class="text-center my-3 ">Dessert</h3>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-10 my-3 col-md-5  my-md-5 text-center">
+                <div class="py-1 catégories-zoom-style">
+
+                    <a href="/recettes/categories/4/" class="category-style-h3" >
+
+                        <img class="img-fluid" src="{{ asset('images/cat_cocktail.png') }}" alt="chaudron">
+                        <h3 class="text-center my-3 ">Cocktail</h3>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+

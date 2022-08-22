@@ -1,0 +1,159 @@
+<div class="container-fluid">
+
+    <div class="row navbar-container">
+
+        <!-- SIDEBAR -->
+        <nav class="navbar navbar-dark col-3 col-md-4 py-2 d-xl-none d-lg-none">
+
+            <!-- Sidebar Mobile/Tablet format -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-start  bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" >
+
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"> <img src="{{ asset('images/logo.png') }}" alt="logo" class="img-fluid">Geek In Taste</h5>
+                    <button type="button" class="btn-close text-reset bg-danger" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div class="offcanvas-body bg-dark px-3 py-2 side-container">
+                    <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ path('main_home') }}"><i class="fa-solid fa-house px-3"></i>Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ path('main_categories') }}"><i class="fa-solid fa-scroll px-3"></i>Catégories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link{{ route == 'recipe_list' ? ' active' }}" aria-current="page" href="{{ path('recipe_list') }}"><i class="fa-solid fa-mortar-pestle px-3"></i>Recettes</a>
+                        </li>
+
+                        {# Bouton quand l'utilisateur est connecté #}
+                        {% if app.user %}
+                            <li class="nav-item d-block d-sm-none">
+                                {# TODO: Lien a inclure #}
+                                <a class="nav-link{{ route == 'app_login' ? ' active' }}" aria-current="page" href="{{ path('main_profils') }}"> <i class="fa-solid fa-user-gear px-3"></i>Profil</a>
+                            </li>
+
+                            <li class="nav-item d-block d-sm-none">
+                                <a class="nav-link{{ route == 'app_login' ? ' active' }}" aria-current="page" href="{{ path('app_recipe') }}"><i class="fa-solid fa-plus px-3"></i>Créer une recette</a>
+                            </li>
+
+                            <li class="nav-item d-block d-sm-none">
+                                <a class="nav-link{{ route == 'app_login' ? ' active' }}" aria-current="page" href="{{ path('app_logout') }}"><i class="fa-solid fa-right-from-bracket px-3"></i>Déconnexion</a>
+                            </li>
+
+
+                        {# Bouton quand l'utilisateur n'est pas connecté #}
+                        {% else %}
+                            <li class="nav-item d-block d-sm-none">
+                                <a class="nav-link{{ route == 'app_login' ? ' active' }}" aria-current="page" href="{{ path('app_login') }}"><i class="fa-solid fa-circle-user px-3"></i>Connexion</a>
+                            </li>
+                        {% endif %}
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ path('main_contact') }}"><i class="fa-solid fa-feather-pointed px-3"></i>Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </nav>
+
+        <!-- LOGO -->
+        <div class="logo d-none d-lg-block col-lg-1">
+            <a href="{{ path('main_home') }}">
+                <img src="{{ asset('images/logo.png') }}" alt="">
+            </a>
+        </div>
+
+        <!-- NAVBAR Only full Screen -->
+        <nav class="navbar-nav d-none d-lg-block navbar-fullscreen col-lg-6 p-0">
+            <ul class="m-0 align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link{{ route == 'main_home' ? ' active' }}" href="{{ path('main_home') }}"><i class="fa-solid fa-house"></i>Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link{{ route == 'main_categories' ? ' active' }}" href="{{ path('main_categories') }}"><i class="fa-solid fa-scroll"></i>Catégories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link{{ route == 'recipe_list' ? ' active' }}" href="{{ path('recipe_list') }}"><i class="fa-solid fa-mortar-pestle"></i>Liste des Recettes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link{{ route == 'main_contact' ? ' active' }}" href="{{ path('main_contact') }}"><i class="fa-solid fa-feather-pointed"></i>Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <!-- NAVBAR SEARCH -->
+        <nav class="col-8 col-md-8 py-2 col-lg-4 p-0 m-0 d-flex flex-row navbar-search">
+
+
+            {# Bouton CONNEXION quand l'utilisateur est connecté #}
+            {% if app.user %}
+
+                <ul class="navbar-icon-connected d-none d-sm-block col-md-4 col-lg-6 m-0 p-0">
+
+                    <li class="nav-item dropdown">
+
+                        <a class="link-icon-connected nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-circle-user"></i>
+                            {{ app.user.pseudonym }}
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <li>
+                                <a class="dropdown-item" href="{{ path('main_profils') }}">
+                                    <i class="fa-solid fa-user-gear"></i>
+                                    Mon profil
+                                </a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <a class="dropdown-item" href="{{ path('app_recipe') }}">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Créer une recette
+                                </a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <a class="dropdown-item" href="{{ path('app_logout') }}">
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                    Déconnexion
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+            {# Bouton quand l'utilisateur n'est pas connecté #}
+            {% else %}
+
+                <!-- user icon -->
+                <div class="user-icon d-none d-sm-block m-0 ">
+                    <a class="nav-link{{ route == '/connexion/' ? ' active' }}" href="{{ path('app_login') }}">Connexion<i class="fa-solid fa-circle-user mx-2"></i></a>
+                </div>
+
+            {% endif %}
+
+            <!-- Search form -->
+            <div class="search-form col-lg-7">
+                <form method="GET" action="{{ path('recipe_search') }}" class="search-box d-flex flex-row">
+                    <input type="search" placeholder="Recherche" name="search" aria-label="search" class="form-control" >
+                    <button type="submit"><img src="{{ asset('images/magnifying-glass.png') }}" alt="icone loupe"></button>
+                </form>
+            </div>
+        </nav>
+
+    </div>
+
+</div>

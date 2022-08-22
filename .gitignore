@@ -1,0 +1,23 @@
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
+
+###> exclusion customs ###
+.idea/
+/migrations/*.php
+/public/images/recettes/*
+!public/images/recettes/.gitignore
+/public/images/profils/*
+!public/images/profils/.gitignore
+###< exclusion customs ###
+

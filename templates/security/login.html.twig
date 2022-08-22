@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <h1 class="col-12 text-center my-5">Connexion</h1>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 col-md-8 col-lg-4 mx-auto">
+
+                <form method="POST">
+
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {# Champ email#}
+                    <div class="mb-3">
+                        <label class="form-label" for="inputEmail">E-mail</label>
+                        <input placeholder="email@example.com" type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control login-form" autocomplete="email" required autofocus>
+                    </div>
+
+                    {# Champ mot de passe#}
+                    <div class="mb-3">
+                        <label class="form-label" for="inputPassword">Mot de passe</label>
+                        <input type="password" name="password" id="inputPassword" placeholder="Mot de passe" class="form-control login-form" autocomplete="current-password" required>
+                    </div>
+
+                    {# Champ invisible anti CSRF #}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    {# bouton de validation #}
+                    <div class="mb-3">
+                        <input type="submit" class="btn btn-outline-danger w-100" value="Connexion" >
+                    </div>
+
+                </form>
+
+                <p>Pas encore de compte ? créer un compte <a aria-current="page" href="{{ path('app_register') }}" class="connect-link-register">ici</a></p>
+
+                <a id="forgot-password" aria-current="page" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
+
+                {# séparateur  formulaire de connexion et connexion google#}
+                <div class="row py-3 mx-auto text-center separateur-container">
+                    <div class="separateur col-5  "></div>
+                    <div class="col-2 text-center"> ou </div>
+                    <div class="separateur col-5 "></div>
+                </div>
+
+                {# Bouton connexion google#}
+                <div class=" row google-btn-container text-center py-3 px-2">
+
+                    <a class="google-btn btn btn-outline-light py-3" href="{{ path('connect_google')}}">
+                        <img class="img-fluid" src="{{ asset('images/google-icon.png') }}" alt="google-icon">
+                        Continuer avec Google
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

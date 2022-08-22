@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une recette{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center my-5">Créer une recette</h1>
+        </div>
+        <div class="row w-50 mx-auto">
+
+            {{ form_start( recipe_form ) }}
+
+            {{ form_errors( recipe_form ) }}
+
+            {{ form_row( recipe_form.title ) }}
+
+            {{ form_row( recipe_form.content ) }}
+
+            {{ form_row( recipe_form.mainCategory) }}
+
+            {{ form_row( recipe_form.nbPeople ) }}
+
+            {{ form_row( recipe_form.difficulty ) }}
+
+            {{ form_row( recipe_form.cost ) }}
+
+            {{ form_row( recipe_form.preparationTime ) }}
+
+            {{ form_row( recipe_form.cookingTime ) }}
+
+            {{ form_row( recipe_form.breakTime ) }}
+
+            {{ form_row( recipe_form.ingredients ) }}
+
+            {{ form_row( recipe_form.steps ) }}
+
+            {{ form_row( recipe_form.image ) }}
+
+            {{ form_row( recipe_form.save ) }}
+
+            {{ form_end( recipe_form ) }}
+
+        </div>
+    </div>
+
+{% endblock %}

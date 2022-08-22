@@ -1,0 +1,29 @@
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div id="sideNavigation" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="{{ path('main_profils') }}">Mon Profil</a>
+            <a href="{{ path('main_profils_parameter') }}">Mes informations personnelles</a>
+
+            <div class="separator-profil-menu"></div>
+            <a href="{{ path('main_profils_personal_recipe') }}">Mes recettes</a>
+            <a href="{{ path('app_recipe') }}">Créer une recette</a>
+            <a href="{{ path('main_contact') }}">Mes recettes préférées</a>
+
+            <div class="separator-profil-menu"></div>
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+            <a href="{{ path('main_profils_delete') }}">Supprimer mon compte</a>
+
+        </div>
+
+        <nav class="topnav">
+            <a href="#" onclick="openNav()">
+                <i class="fas fa-arrow-alt-circle-right"></i>
+            </a>
+        </nav>
+
+
+    </div>
+</div>

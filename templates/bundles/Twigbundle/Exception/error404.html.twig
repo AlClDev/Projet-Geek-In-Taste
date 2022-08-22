@@ -1,0 +1,17 @@
+{% extends "base.html.twig"  %}
+
+{%block title%}Erreur 404 : page introuvable {%endblock%}
+
+{%block body%}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+
+                <video src=" {{asset('videos/404.mp4')}} " autoplay muted poster="{{asset('images/404.png')}}" class="img-fluid my-3" ></video>
+
+            </div>
+        </div>
+    </div>
+
+{%endblock%}

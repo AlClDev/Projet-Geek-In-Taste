@@ -1,0 +1,1212 @@
+/* Importation police d'écriture */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
+/* Déclaration variables CSS */
+:root{
+    --main-color: rgb(26, 26, 26);          /* noir */
+    --second-color : #d9d9d9;       /* blanc */
+    --third-color : #dc3545;        /* rouge bootstrap */
+}
+
+/* Partie générale */
+body{
+    background-color: var(--main-color);
+    background-image: url(../images/bg.png);
+    background-size: cover;
+    color: var(--second-color);
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    min-height: 90vh;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+}
+
+/* Navbar */
+
+.navbar-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.navbar-search{
+    align-items: center;
+}
+
+.search-form{
+    padding-left: 10px;
+}
+
+.user-icon{
+    align-items: center;
+
+}
+
+.user-icon a{
+    display: flex;
+    align-items: center;
+}
+
+.user-icon a i{
+    font-size: 2rem;
+    margin-right: 10px;
+
+}
+
+.navbar-icon-connected{
+    list-style: none;
+}
+
+.navbar-icon-connected li .link-icon-connected {
+    color: var(--second-color);
+}
+
+.search-box{
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 7px;
+    padding: 5px 10px;
+    border: none;
+}
+
+.search-box input{
+    background: transparent;
+    flex:  1;
+    border: 0;
+    outline: none;
+    font-size: 1.25rem;
+    color: var(--second-color);
+}
+
+.search-box input:focus{
+    background: transparent;
+    color: var(--second-color);
+    border: 2px solid var(--third-color);
+    box-shadow: 0 0 0 .25rem rgba(220, 53, 69, 0.3)
+}
+
+.search-box button{
+    border: 0;
+    background: transparent;
+}
+
+.search-box img{
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+/* Navbar FullScreen */
+.navbar-fullscreen ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+}
+
+.logo img{
+    width: 80px;
+    height: 80px;
+}
+
+.navbar-fullscreen ul li{
+    padding: 12px;
+}
+
+.navbar-fullscreen ul li a:hover{
+    color: #808080;
+}
+
+.navbar-fullscreen ul li a i{
+    padding-right: 8px;
+}
+
+.navbar-fullscreen ul li a:hover {
+    color: var(--second-color);
+}
+
+.nav-link{
+    text-decoration: none;
+    color: grey;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: var(--second-color);
+}
+
+.active{
+    color: var(--second-color);
+}
+
+/* Menu */
+.offcanvas-header img{
+    width: 10vw;
+    height: auto;
+}
+
+/* Sidebar */
+.side-container{
+    background: rgb(26,26,26);
+    background: linear-gradient(0deg, rgba(26,26,26,1) 20%, rgba(26,26,26,1) 59%, rgba(40,40,40,1) 100%);
+}
+
+.side-container a{
+    font-size: 1rem;
+    border-bottom: 1px solid var(--main-color);
+    padding: 15px 0 15px 0;
+}
+
+/* presentation text */
+.text-container h1{
+    border: 1px solid var(--second-color);
+    padding: 4px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    font-size: 2.2rem;
+}
+
+/* Small icons section */
+.small-icons img{
+    border-radius: 200px;
+    width: 43vw;
+    height: auto;
+    padding: 0;
+    margin-bottom: -40px;
+}
+
+/* Footer-link */
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    margin-top: 200px;
+}
+
+.footer-link ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.footer-link ul li a i{
+    color: var(--second-color);
+    font-size: 1.5rem;
+    padding-bottom: 5px;
+}
+
+.credit-img{
+    text-decoration: none;
+    font-size: 0.7em;
+}
+
+/* Mediaquery pour les écrans de 768 pixels de large minimum */
+@media screen and (min-width: 768px){
+
+    /* presentation text */
+    .text-container h1{
+        margin-top: 25px;
+        width: 43vw;
+    }
+
+    /* Main picture */
+    .main-picture{
+        margin-top: 15px;
+    }
+
+    .main-picture img{
+        width: 50vw;
+        height: auto;
+    }
+
+    /*Small picture*/
+    .small-icons img{
+        margin-bottom: -100px;
+    }
+
+}
+
+/* Mediaquery pour les écrans de 1000 pixels de large minimum */
+@media screen and (min-width: 990px){
+
+    .text-container h1, .text-container h2{
+        width: 20vw;
+    }
+
+    .user-icon{
+        padding-left: 10px;
+    }
+
+    /* contenu de page */
+    .container-page{
+        align-items: center;
+    }
+
+    /* Main picture */
+    .main-picture{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-picture img{
+        width: 35vw;
+        height: auto;
+    }
+
+    /* Small icons section */
+    .small-icons{
+        margin-top: 50px;
+    }
+
+    .small-icons img{
+        width: 25vw;
+        height: auto;
+        margin-bottom: -50px;
+    }
+
+}
+
+/* Mediaquery pour les écrans de 1200 pixels de large minimum */
+@media screen and (min-width: 1200px){
+
+    .small-icons img{
+        width: 250px;
+        height: 250px;
+        margin-bottom: -20px;
+    }
+
+}
+
+/*Fin du CSS de la page d'accueil*/
+
+/*Page de connexion*/
+.separateur{
+    height: 1px;
+    background-color: var(--second-color);
+}
+.separateur-container{
+    align-items: center;
+}
+.google-btn img{
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+}
+.google-btn{
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.google-btn:hover{
+    background-color: var(--second-color);
+}
+
+.connect-link-register{
+    color: var(--third-color);
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.connect-link-register:hover{
+    color: var(--second-color);
+}
+
+/*Fin page de connexion*/
+
+/*Pagination*/
+.pagination .page-item .page-link{
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--second-color);
+    border: 1px solid var(--third-color);
+}
+
+.pagination .page-item.disabled{
+    cursor: not-allowed;
+}
+
+.pagination .page-item.disabled .page-link, .pagination .page-item.active {
+    color: grey;
+}
+
+.pagination .active {
+    background-color: var(--third-color);
+}
+
+.pagination .active .page-link{
+    color: var(--second-color);
+}
+
+.pagination .page-item a.page-link:hover{
+    background-color: #292929;
+}
+/*Fin Pagination*/
+
+/* Partie Anis : enlever ce comm !!!!! */
+.title-of-recipe{
+    color: var(--second-color);
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    transition: all 0.5s ease;
+}
+
+.title-of-recipe:hover{
+    color: var(--third-color);
+    font-size: 35px;
+}
+
+.recip-list-style-text::first-letter{
+    text-transform: uppercase;
+}
+
+#recipe_list_image{
+    border-radius: 40px;
+}
+
+#return{
+    color: var(--third-color);
+    transition: all 0.5s ease-in-out;
+}
+
+#return:hover{
+    color: var(--second-color);
+}
+
+#forgot-password{
+    color: var(--third-color);
+    transition: all 0.5s ease-in-out;
+    text-decoration: none;
+}
+
+#forgot-password:hover{
+    color: var(--second-color);
+    font-size: 16px;
+}
+
+#image{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+
+#flex-wrap-pls{
+    flex-wrap: wrap;
+}
+
+.title-of-the-recipe{
+    color: var(--second-color);
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    transition: all 0.5s ease;
+}
+
+#card-recipe {
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.322);
+}
+.title-of-the-recipe:hover{
+    color: var(--third-color);
+    font-size: 45px;
+}
+
+#note-of-author{
+    transition: all 0.5s ease;
+
+}
+
+#note-of-author:hover{
+    color: var(--second-color);
+    font-size: 20px;
+}
+
+.lire-la-suite{
+    color: var(--third-color);
+    display: flex;
+    justify-content: center;
+    transition: all 0.5s ease;
+}
+
+.lire-la-suite:hover{
+    color: var(--second-color);
+    font-size: 20px;
+}
+
+.publie-le{
+    color: rgb(214, 214, 214);
+    text-align: center;
+}
+
+
+/* Recipe View */
+
+/* General */
+h1::first-letter
+{
+    text-transform: uppercase;
+}
+
+h2.red-title{
+    font-size: 1.8rem;
+    font-weight: bolder;
+    color: var(--third-color);
+    padding-left: 15px;
+}
+
+.recipe-link-connect{
+    color: var(--second-color);
+    transition: all 0.5s ease-in-out;
+    text-decoration: none;
+}
+
+.recipe-link-connect:hover{
+    color: var(--third-color);
+}
+
+
+/* Breadcrumb */
+.breadcrumb-item{
+    font-size: .75rem;
+}
+
+/* Recipe title */
+h1.recipe-title{
+    font-size: 2.8rem;
+}
+
+ol li a,
+    /* anchor to comment part in recipe header */
+a.comment-anchor{
+    text-decoration: none;
+    color: var(--third-color);
+    transition: all ease-in-out 1s;
+}
+
+ol li a:hover,
+    /* anchor to comment part in recipe header */
+a.comment-anchor:hover{
+    color: whitesmoke;
+}
+
+/* Info picto */
+.tags .rounded-pill{
+    background-color: var(--third-color);
+    font-weight: bolder;
+}
+.info-picto{
+    font-size: 1.3rem;
+}
+
+.info-picto i{
+    color: var(--third-color);
+    font-size: 1.5rem;
+}
+
+/* Recipe button */
+.modify-recipe-on-recipe{
+    text-decoration: none;
+    color: var(--second-color);
+    font-size: 1.2rem;
+}
+.delete-recipe-on-recipe{
+    text-decoration: none;
+    color: var(--second-color);
+    font-size: 1.2rem;
+}
+
+a.share-recipe-link i{
+    text-decoration: none;
+    color: var(--second-color);
+    border: 1px solid var(--third-color);
+    width: auto;
+    padding: 10px;
+    border-radius: 100px;
+}
+
+/* Times card */
+table.times-card{
+    background-color: var(--second-color);
+    color: black;
+    border-radius: 16px 0;
+    padding: 5px;
+}
+
+table.times-card  tbody tr{
+    text-align: center;
+    border-bottom: solid white 1px;
+    line-height: 2rem;
+}
+
+table.times-card  tbody tr th{
+    color: var(--third-color);
+}
+
+table.times-card  tbody tr.none{
+    border-bottom: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Badge "number of person" */
+h3.bg-secondary{
+    --bs-bg-opacity: 0
+}
+
+/* Ingredient list & recipe step*/
+.steps-and-ingredients{
+    font-size: 1rem;
+}
+
+/* Comments */
+.smiley-rating{
+    height: 80px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.smileys i{
+    color: white;
+    font-size: 4rem;
+}
+
+h3.user-rating-title{
+    font-size: 1.2rem;
+    color: var(--second-color);
+}
+
+.comment{
+    background-color: rgba(217, 217, 217, 30%);
+    color: black;
+    border-radius: 16px 0;
+}
+
+.delete-comment{
+    width: inherit;
+    background-color: transparent;
+    color: var(--third-color);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.rating-in-comment>i{
+    font-size: 3rem;
+}
+
+.date-publish-comment{
+    color: var(--second-color);
+}
+
+/* Signal recipe */
+.signal-recipe{
+    color: var(--third-color);
+    transition: all 0.5s ease-in-out;
+    text-decoration: none;
+}
+
+.signal-recipe:hover{
+    color: var(--second-color);
+}
+
+/* Mediaquery pour les écrans de 768 pixels de large minimum */
+@media screen and (min-width: 768px){
+
+    h2.red-title{
+        font-size: 2rem;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb-item{
+        font-size: 1.2rem;
+    }
+
+    /* Recipe title */
+    .recipe-title>h1{
+        font-size: 3rem;
+    }
+
+
+    /* Anchor to comment part in recipe header */
+    a.comment-anchor{
+        font-size: 1.2rem;
+    }
+
+    /* Info picto */
+    .info-picto{
+        font-size: 1.8rem;
+    }
+
+    .info-picto i{
+        font-size: 2.2rem;
+    }
+
+    /* Times card */
+    table.times-card{
+        padding: 10px;
+    }
+
+    table.times-card  tbody tr{
+        font-size: 1.2rem;
+        border-bottom: solid white 2px;
+        line-height: 3.5rem;
+    }
+
+    table.times-card  tbody tr.none{
+        font-size: 1.5rem;
+    }
+
+    /* Ingredient list & recipe step*/
+    .steps-and-ingredients{
+        font-size: 1.2rem;
+        padding-left: 15px;
+    }
+
+    .author-note img{
+        height: 150px;
+        width: 150px;
+    }
+
+    /* Comments */
+    .comment{
+        background-color: rgba(217, 217, 217, 30%);
+        color: black;
+        border-radius: 16px 0;
+    }
+
+    .delete-comment{
+        width: inherit;
+        background-color: transparent;
+        color: var(--third-color);
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .fa-delete-left{
+        color: var(--third-color);
+        font-size: 1rem;
+    }
+
+    .button-comment{
+        color: black;
+        font-weight: bold;
+        transition: all ease-in-out 1s;
+    }
+
+    .button-comment:hover{
+        background-color: black;
+        color: var(--third-color);
+    }
+
+    /* Tags */
+    .tags .rounded-pill{
+        background-color: var(--third-color);
+    }
+}
+
+/* Mediaquery pour les écrans de 992 pixels de large minimum */
+@media screen and (min-width: 992px){
+
+    /* Recipe title */
+    h1.recipe-title{
+        font-size: 4rem;
+    }
+
+    /* Card note de l'auteur */
+    .author-note img{
+        width: 100px;
+        height: 100px;
+        margin-right: 15px;
+    }
+
+    #comment-scroll{
+        overflow-x: auto;
+    }
+
+}
+
+
+
+/*
+* Page CGU
+*/
+
+/* Fond du text */
+.background-cgu{
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+/* Style du H1 */
+.h1-cgu-style{
+    text-transform: capitalize;
+    color: var(--third-color);
+    font-weight: bolder;
+    font-size: 2.6rem;
+}
+
+/* Permets de mettre en majuscules la première lettre de chaque balise */
+h2::first-letter,
+p::first-letter,
+li::first-letter{
+    text-transform: uppercase;
+}
+
+/* Fleche pour revenir en haut de page*/
+.anchor-cgu-style{
+    color: var(--second-color);
+    font-size: 30px;
+    transition: all 0.5s ease-in-out;
+}
+
+.anchor-cgu-style:hover{
+    color: var(--third-color);
+}
+
+
+
+/*
+* Page inscription
+*/
+
+/* Stylisation du h1 de la page d'inscription*/
+.h1-register-style{
+    color: var(--second-color);
+    font-size: 2.6rem;
+    font-weight: bolder;
+
+}
+/* Change la couleur des ecriture en rouge*/
+.register-style-text-form{
+    color: var(--second-color);
+}
+/* permet de metre en ligne le champs et le text pour la cgu*/
+.cgu-registration-style{
+    display: flex;
+
+}
+/* Style du lien pour la page CGU */
+.link-cgu-register-style a{
+    text-decoration: none;
+    color: var(--third-color);
+    padding-left: 5px;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Style du lien pour la page CGU en passant la souris dessus */
+.link-cgu-register-style a:hover{
+    color: var(--second-color);
+}
+
+
+
+/* Profil section */
+
+/* Navigation sidebar menu profil */
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 70px;
+    left: 0;
+    background-color: var(--main-color);
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: all ease .2s;
+}
+
+/* Navigation sidebar menu profil liens*/
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: var(--second-color);
+    display: block;
+    transition: all ease .2s;
+}
+
+/* Change la couleur des liens quands on passe la souris dessus */
+.sidenav a:hover, .offcanvas a:focus{
+    color: var(--third-color);
+}
+
+/* position et style du bouton close */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style du contenu qui sera pousser vers la droite */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+    overflow:hidden;
+    width:100%;
+}
+body {
+    overflow-x: hidden;
+}
+
+/* Style des liens dans la sidebar */
+.topnav a{
+    float: left;
+    display: block;
+    color: var(--second-color);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 2.5rem;
+    transition: all ease .2s;
+}
+
+/* Change la couleur des liens en hover */
+.topnav a:hover {
+    color: var(--third-color);
+}
+
+/* Ajoute une couleur a la classe active du liens */
+/*.topnav a.active {*/
+/*    background-color: #4CAF50;*/
+/*    color: white;*/
+/*}*/
+
+.separator-profil-menu{
+    border-bottom: solid 1px var(--second-color);
+    padding: 10px 0;
+}
+
+
+/*  Profil Page */
+
+/* Pseudonym title */
+h1.profil-name{
+    font-size: 4rem;
+    font-style: italic;
+}
+
+/* User picture */
+.profil-user-picture img{
+    border-radius: 100%;
+    width: 20vw;
+}
+
+.picture-text-style{
+    color: var(--third-color);
+    transition: all 0.5s ease-in-out;
+    text-decoration: none;
+}
+
+.picture-text-style:hover{
+    color: var(--second-color);
+}
+
+/* User informations */
+.user-info-profil{
+    border: 2px solid var(--second-color);
+    border-radius: 16px 0;
+}
+
+/* General */
+nav.profil-link a{
+    text-decoration: none;
+    padding-bottom: 20px;
+    color: var(--second-color);
+    text-shadow: 0 1px 2px var(--third-color);
+    transition: all ease .2s;
+}
+
+nav.profil-link a:hover{
+    color: var(--third-color);
+    text-shadow: -2px -1px 14px var(--second-color);
+}
+
+nav.profil-link a i{
+    padding-right: 10px;
+    text-shadow: none;
+    color: var(--third-color);
+    transition: all ease .2s;
+}
+
+nav.profil-link a i:hover{
+    color: var(--second-color);
+    text-shadow: 0 2px 5px var(--third-color);
+}
+
+/* Profil parameter page */
+
+/* Link to change password and picture */
+nav.profil-link-parameter a,
+nav.profil-link-parameter a h3{
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--second-color);
+    transition: all ease .2s;
+}
+nav.profil-link-parameter a h3:hover{
+    color: var(--third-color);
+}
+
+nav.profil-link-parameter a i{
+    font-size: 2rem;
+    padding: 10px;
+    color: var(--third-color);
+    border: solid 1px var(--third-color);
+    border-radius: 10%;
+    transition: all ease .2s;
+}
+nav.profil-link-parameter a i:hover{
+    color: var(--second-color);
+    border: none;
+}
+
+/* Form separator */
+.profil-parameter-separator{
+    border-bottom: solid 1px var(--third-color
+    );
+}
+
+/* Mediaquery pour les écrans de 768 pixels de large minimum */
+@media screen and (min-width: 768px){
+
+    /* Pseudonym title */
+    h1.profil-name{
+        font-size: 5rem;
+    }
+
+    /* User picture */
+    .profil-user-picture img{
+        border-radius: 200px;
+    }
+
+    /* User informations */
+    .user-info-profil{
+        font-size: 1.4rem;
+        line-height: 3rem;
+        padding: 20px;
+    }
+
+    nav.profil-link a{
+        font-size: 1.2rem;
+    }
+
+    nav.profil-link a i{
+        font-size: 1.5rem;
+    }
+
+}
+
+/* Mediaquery pour les écrans de 992 pixels de large minimum */
+@media screen and (min-width: 992px){
+
+    nav.profil-link a i{
+        font-size: 1.8rem;
+    }
+
+}
+
+/* Mediaquery pour les écrans de 1200 pixels de large minimum */
+@media screen and (min-width: 1200px){
+
+    nav.profil-link p{
+        font-size: 1.4rem;
+    }
+
+    nav.profil-link a{
+        font-size: 1.6rem;
+    }
+
+    nav.profil-link a i{
+        font-size: 2rem;
+    }
+
+
+}
+
+/* Catégorie view */
+
+.catégories-zoom-style:hover{
+    transform: scale(1.2);
+    transition: all 0.5s ease-in-out
+}
+
+.category-style-h3{
+    text-decoration: none;
+    color: var(--second-color);
+    transition: all 0.5s ease-in-out
+}
+
+.category-style-h3:hover{
+    color: var(--third-color);
+}
+
+/* Formulaire Style */
+
+/* Cible l'ID des formulaires */
+#registration_form_plainPassword_first,
+#registration_form_plainPassword_second,
+#registration_form_email,
+#registration_form_pseudonym,
+#registration_form_birthDate_day,
+#registration_form_birthDate_month,
+#registration_form_birthDate_year,
+#registration_form_pictureProfil,
+#inputEmail,
+#inputPassword,
+#reset_password_request_form_email,
+#change_password_form_plainPassword_first,
+#change_password_form_plainPassword_second,
+#create_and_edit_recipe_form_title,
+#create_and_edit_recipe_form_content,
+#create_and_edit_recipe_form_mainCategory,
+#create_and_edit_recipe_form_nbPeople,
+#create_and_edit_recipe_form_difficulty,
+#create_and_edit_recipe_form_cost,
+#create_and_edit_recipe_form_preparationTime_hour,
+#create_and_edit_recipe_form_preparationTime_minute,
+#create_and_edit_recipe_form_cookingTime_hour,
+#create_and_edit_recipe_form_cookingTime_minute,
+#create_and_edit_recipe_form_breakTime_hour,
+#create_and_edit_recipe_form_breakTime_minute,
+#create_and_edit_recipe_form_ingredients,
+#create_and_edit_recipe_form_steps,
+#create_and_edit_recipe_form_image,
+#edit_profil_form_pseudonym,
+#edit_profil_form_email,
+#edit_profil_form_birthDate_day,
+#edit_profil_form_birthDate_month,
+#edit_profil_form_birthDate_year,
+#edit_password_type_form_plainPassword_first,
+#edit_password_type_form_plainPassword_second,
+#edit_profil_photo_type_form_pictureProfil,
+#edit_recipe_form_title,
+#edit_recipe_form_content,
+#edit_recipe_form_mainCategory,
+#edit_recipe_form_nbPeople,
+#edit_recipe_form_difficulty,
+#edit_recipe_form_cost,
+#edit_recipe_form_preparationTime_hour,
+#edit_recipe_form_preparationTime_minute,
+#edit_recipe_form_cookingTime_hour,
+#edit_recipe_form_cookingTime_minute,
+#edit_recipe_form_breakTime_hour,
+#edit_recipe_form_breakTime_minute,
+#edit_recipe_form_ingredients,
+#edit_recipe_form_steps,
+#edit_recipe_form_image,
+#add_comment_form_content
+{
+    color: var(--second-color) !important;
+    background-color: var(--main-color) !important;
+}
+
+/* Cible le Focus de l'ID des formulaires */
+#registration_form_plainPassword_first:focus,
+#registration_form_plainPassword_second:focus,
+#registration_form_email:focus,
+#registration_form_pseudonym:focus,
+#registration_form_birthDate_day:focus,
+#registration_form_birthDate_month:focus,
+#registration_form_birthDate_year:focus,
+#registration_form_pictureProfil:focus,
+#inputEmail:focus,
+#inputPassword:focus,
+#reset_password_request_form_email:focus,
+#change_password_form_plainPassword_first:focus,
+#change_password_form_plainPassword_second:focus,
+#create_and_edit_recipe_form_title:focus,
+#create_and_edit_recipe_form_content:focus,
+#create_and_edit_recipe_form_mainCategory:focus,
+#create_and_edit_recipe_form_nbPeople:focus,
+#create_and_edit_recipe_form_difficulty:focus,
+#create_and_edit_recipe_form_cost:focus,
+#create_and_edit_recipe_form_preparationTime_hour:focus,
+#create_and_edit_recipe_form_preparationTime_minute:focus,
+#create_and_edit_recipe_form_cookingTime_hour:focus,
+#create_and_edit_recipe_form_cookingTime_minute:focus,
+#create_and_edit_recipe_form_breakTime_hour:focus,
+#create_and_edit_recipe_form_breakTime_minute:focus,
+#create_and_edit_recipe_form_ingredients:focus,
+#create_and_edit_recipe_form_steps:focus,
+#create_and_edit_recipe_form_image:focus,
+#edit_profil_form_pseudonym:focus,
+#edit_profil_form_email:focus,
+#edit_profil_form_birthDate_day:focus,
+#edit_profil_form_birthDate_month:focus,
+#edit_profil_form_birthDate_year:focus,
+#edit_password_type_form_plainPassword_first:focus,
+#edit_password_type_form_plainPassword_second:focus,
+#edit_profil_photo_type_form_pictureProfil:focus,
+#edit_recipe_form_title:focus,
+#edit_recipe_form_content:focus,
+#edit_recipe_form_mainCategory:focus,
+#edit_recipe_form_nbPeople:focus,
+#edit_recipe_form_difficulty:focus,
+#edit_recipe_form_cost:focus,
+#edit_recipe_form_preparationTime_hour:focus,
+#edit_recipe_form_preparationTime_minute:focus,
+#edit_recipe_form_cookingTime_hour:focus,
+#edit_recipe_form_cookingTime_minute:focus,
+#edit_recipe_form_breakTime_hour:focus,
+#edit_recipe_form_breakTime_minute:focus,
+#edit_recipe_form_ingredients:focus,
+#edit_recipe_form_steps:focus,
+#edit_recipe_form_image:focus,
+#add_comment_form_content:focus
+{
+    border-color:  var(--third-color) !important;
+    box-shadow: 0 0 0 .25rem rgba(220, 53, 69, 0.3) !important;
+    transition: all 0.5s ease-in-out !important;
+}
+
+/* Div pour englober le champs du formulaire */
+#passField {
+
+    top: 0;
+}
+
+/* Style de l'infobulle */
+#bubble{
+    visibility: hidden;
+    width: auto;
+    background-color: rgb(49, 49, 49);
+    color: var(--second-color);
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 5px;
+    position: absolute;
+    z-index: 1;
+}
+
+/* Affichage de l'infobulle sur le formulaire en passant la souris sur le champs */
+#passField:hover #bubble{
+    visibility: visible;
+}
+
+.filedRequired{
+    display: flex;
+    flex-direction: row;
+    color: var(--third-color);
+}
+
+/* Check Mail */
+.check-mail-link{
+    color: var(--third-color);
+    transition: all 0.5s ease-in-out;
+    text-decoration: none;
+}
+
+.check-mail-link:hover{
+    color: var(--second-color);
+}

@@ -1,0 +1,44 @@
+# Documentation on how to configure the bundle can be found at: https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html
+liip_imagine:
+    # valid drivers options include "gd" or "gmagick" or "imagick"
+    driver: "gd"
+
+    filter_sets:
+
+        # Paramétrage du filtre pour l'affichage des photos d'une recette dans la page "recette"
+        recipe:
+            quality: 75
+            filters:
+                scale:
+                    dim: [ 500, 500 ]
+
+        # Paramétrage du filtre pour l'affichage des photos d'une recette dans la page qui liste les recettes
+        recipe_list:
+            quality: 75
+            filters:
+                scale:
+                    dim: [ 200, 200 ]
+
+
+        # Paramétrage du filtre pour l'affichage de la photo de profil dans la section "note de l'auteur" de la page "recette"
+        author_note:
+            quality: 75
+            filters:
+                scale:
+                    dim: [ 95, 95 ]
+
+
+        # Paramétrage du filtre pour l'affichage de la photo principale d'une recette dans la section "recettes similaire" de la page "recette"
+        similar_recipe:
+            quality: 75
+            filters:
+                scale:
+                    dim: [ 250, 250 ]
+
+
+        # Paramétrage du filtre pour l'affichage de la photo de profil sur un commentaire de la page "recette"
+        comment:
+            quality: 75
+            filters:
+                scale:
+                    dim: [ 100, 100 ]

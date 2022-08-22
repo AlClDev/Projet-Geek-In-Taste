@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}Accueil{% endblock %}
+
+{% block body %}
+
+    <!-- PAGE -->
+
+    <div class="container-fluid">
+
+        <div class="row container-page">
+
+            <!-- presentation text -->
+            <div class=" text-center mx-auto py-5 px-5 text-container col-sm-8 col-lg-4">
+                <h1 class="mx-auto">Geek In Taste</h1>
+                <h2 class="mx-auto">Bienvenue dans l'aventure de la cuisine dans la pop culture</h2>
+            </div>
+
+            <!-- Main picture -->
+            <div class=" d-none d-sm-block col-md-9 col-lg-4 text-center mx-auto main-picture">
+                <img class=" text-center mx-auto " src="{{ asset('images/bibimbap.png') }}" alt="ramen">
+            </div>
+
+            <!-- Small icons section  -->
+            <div class="small-icons-container col-lg-4">
+                <div class="small-icons">
+                    <div class="icons-text-container text-center">
+                        <img src="{{ asset('images/logo_potions.png') }}" alt="logo_potion">
+                        <h3>Potions</h3>
+                    </div>
+                    <div class="icons-text-container text-center">
+                        <img src="{{ asset('images/logo_chaudron.png') }}" alt="logo_chaudron">
+                        <h3>Mixtures</h3>
+                    </div>
+                    <div class="icons-text-container text-center">
+                        <img src="{{ asset('images/logo_donut.png') }}" alt="logo_donut">
+                        <h3 class="mb-5">Douceurs</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,399 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ recipe.title }}{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"> {% endblock %}
+
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        {# Recipe header #}
+        <div class="row my-2 my-md-3">
+
+            {# Breadcrumb #}
+            <nav class="col-12">
+
+                <div style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="col 12 py-4 m-0">
+
+                    <ol class="breadcrumb  d-flex flex-nowrap">
+
+                        <li class="breadcrumb-item"><a href="{{ path('main_home') }}">Accueil</a></li>
+                        {# TODO: Dynamiser si user arrive sur la recette via son profil #}
+                        <li class="breadcrumb-item"><a href="{{ path('recipe_list') }}">Liste des recettes</a></li>
+
+                        <li class="breadcrumb-item active" aria-current="page">{{ recipe.title }}</li>
+                    </ol>
+
+                </div>
+
+            </nav>
+
+            {# Recipe title #}
+            <h1 class="col-12 pb-4 text-center recipe-title my-lg-3">{{ recipe.title }}</h1>
+
+        </div>
+
+
+        {# Recipe informations #}
+        <div class="row my-2 my-md-3">
+
+            {# Rating and picture #}
+            <div class="col-12 col-lg-6 col-xl-7">
+
+                {# Rating #}
+                <nav class="row align-content-around">
+
+                    <a href="#comment-anchor-view" class="comment-anchor col text-start"><i class="fa-solid fa-comment-dots pe-1"></i>{{ recipe.comments|length }}</a>
+
+                    <a href="#comment-anchor-form" class="comment-anchor col text-end">Donnez votre avis</a>
+
+                </nav>
+
+                {# Picture #}
+                <div class="row">
+                    <img src="{{ asset('images/recettes/' ~ recipe.image) }}" class="img-fluid d-block w-100" alt="">
+                </div>
+
+            </div>
+
+            {# Info-picto and share buttons #}
+            <div class="col-12 col-lg-6 col-xl-5 my-3">
+
+                {# Info-picto #}
+                <section class="row pt-lg-5">
+
+                    <div class="info-picto d-flex flex-row pt-xl-3">
+
+                        {% if recipe.mainCategory.id == 1 %}
+                            <p class="tags text-center col">
+                                <span class="mx-1 my-1 w-100 badge rounded-pill">Entrée</span>
+                            </p>
+                        {% elseif recipe.mainCategory.id == 2 %}
+                            <p class="tags text-center col">
+                                <span class="mx-1 my-1 w-100 badge rounded-pill">Plat</span>
+                            </p>
+                        {% elseif recipe.mainCategory.id == 3 %}
+                            <p class="tags text-center col">
+                                <span class="mx-1 my-1 w-100 badge rounded-pill">Dessert</span>
+                            </p>
+                        {% elseif recipe.mainCategory.id == 4 %}
+                            <p class="tags text-center col">
+                                <span class="mx-1 my-1 w-100 badge rounded-pill">Cocktail</span>
+                            </p>
+                        {% endif %}
+
+                        <p class="text-center col">
+                            <i class="fa-solid fa-hand-fist pe-1"></i>
+                            {{ recipe.difficulty }}
+                        </p>
+
+                        <p class="text-center col">
+                            <i class="fa-solid fa-euro-sign pe-1"></i>
+                            {{ recipe.cost }}
+                        </p>
+
+                    </div>
+
+                </section>
+
+                    {# Share buttons #}
+                    {% if (is_granted('ROLE_ADMIN')) or (recipe.author == app.user) %}
+                    <div class="row flex-nowrap my-5">
+
+                        <a href="{{ path('recipe_edit', {'id': recipe.id}) }}" class="col modify-recipe-on-recipe text-center text-danger">Modifier<i class="fa-solid fa-feather-pointed ps-2"></i></a>
+                        <a href="{{ path('recipe_delete', {'id': recipe.id}) }}" class="col delete-recipe-on-recipe text-center text-danger">Supprimer<i class="fa-solid fa-delete-left ps-2"></i></a>
+
+                    </div>
+                    {% endif %}
+                    <div class="row flex-nowrap my-3 pt-xl-3">
+                        {% if app.user != recipe.author  %}
+
+                            <a href="{{ path('main_contact') }}" class="col text-center share-recipe-link text-start"><i class="fa-solid fa-heart-circle-plus"></i></a>
+
+                        {% endif %}
+
+                        <a target="_blank" class="twitter-share-button col text-center share-recipe-link text-start" href="https://twitter.com/intent/tweet?text=Hello%20world" data-size="large"><i class="fa-brands fa-twitter"></i></a>
+
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore col text-center share-recipe-link text-end"><i class="fa-brands fa-facebook"></i></a>
+
+                    </div>
+
+            </div>
+
+        </div>
+
+
+        {# Ingredients and times card#}
+        <div class="row my-md-3">
+
+            {# Times card order-lg-2#}
+            <div class="col-12 col-lg-5 offset-lg-1 order-lg-2">
+
+                <div class="row mt-4">
+                    <h2 class="red-title col-12 pb-3 ps-3 my-md-3 pt-md-3">Temps de préparation</h2>
+                </div>
+
+                <div class="row ps-5 ">
+                    <table class="times-card col-11">
+                        <tbody>
+                        <tr>
+                            <th scope="row">Préparation</th>
+                            {% if recipe.preparationTime|date('H:i') == "00:00" %}
+                                <td> - </td>
+                            {% else %}
+                                <td id="prepaTime">{{ recipe.preparationTime|date('H:i') }}</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row">Repos</th>
+                            {% if recipe.breakTime|date('H:i') == "00:00" %}
+                                <td> - </td>
+                            {% else %}
+                                <td id="beackTime">{{ recipe.breakTime|date('H:i') }}</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th scope="row">Cuisson</th>
+                            {% if recipe.cookingTime|date('H:i') == "00:00" %}
+                                <td> - </td>
+                            {% else %}
+                                <td id="cookingTime">{{ recipe.cookingTime|date('H:i') }}</td>
+                            {% endif %}
+                        </tr>
+                        <tr class="none">
+                            <th scope="row">Total</th>
+                            {# Convetion de temps de préparation en seconde #}
+                            {% set preparationTimeSeconds = recipe.preparationTime|date('i') * 60 + recipe.preparationTime|date('H') * 3600 %}
+                            {# Convetion de temps de repos en seconde #}
+                            {% set breakTimeSeconds = recipe.breakTime|date('i') * 60 + recipe.breakTime|date('H') * 3600 %}
+                            {# Convetion de temps de cuisson en seconde #}
+                            {% set cookingTimeSeconds = recipe.cookingTime|date('i') * 60 + recipe.cookingTime|date('H') * 3600 %}
+                            {# Calcul des secondes total #}
+                            {% set total = preparationTimeSeconds + breakTimeSeconds + cookingTimeSeconds %}
+                            {# Affichage en décimal (ex : 4502 = 45.02) #}
+                            <td>{{ (total/3600)|round(0, 'floor') }}h{{ (total - (total/3600)|round(0, 'floor') * 3600)/60 }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            {# Ingredients order-lg-1#}
+            <div class="col-12 col-lg-6 order-lg-1">
+
+                {# Title and number of person #}
+                <div class="row mt-4">
+
+                    <h2 class="red-title col-6 text-start py-3 my-md-3 pt-md-3">Ingrédients</h2>
+
+                    <h3 class="col-6 text-end"><span class="badge my-3 my-md-3 pt-md-3"><i class="fa-solid fa-people-group pe-1"></i>| {{ recipe.nbPeople }}</span></h3>
+
+                </div>
+
+                {# Ingredient list #}
+                <div class="row ingredient-list">
+                    <p class="steps-and-ingredients">{{ recipe.ingredients|nl2br }}</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        {# Preparation and author note #}
+        <div class="row my-2 my-md-3">
+
+            {# Preparation #}
+            <div class="col-12 col-lg-6">
+
+                {# Title  #}
+                <div class="row mt-4">
+                    <h2 class="red-title py-3 my-md-3 pt-md-3">Préparation</h2>
+                </div>
+
+                {# Preparation step #}
+                <div class="row">
+                    <p class="steps-and-ingredients">{{ recipe.steps|nl2br }}</p>
+                </div>
+
+            </div>
+
+            {# Author note #}
+            <div class="col-12 col-lg-5 offset-lg-1 d-lg-flex align-items-lg-center">
+
+                <div class="card author-note px-0">
+
+                    <div class="card-body px-1">
+                        <h5 class="card-title text-center text-danger pb-1 fs-1">Note du chef</h5>
+
+                        <div class="d-flex align-items-center">
+
+                            {# TODO: dynamiser la photo de profil #}
+                            <img class="col-4 img-fluid img-thumbnail col-lg-5" src="{{ asset('images/orange.jpg')|imagine_filter('author_note') }}" alt="">
+
+                            <p class="col-8 ps-2 card-text text-dark col-lg-9">
+                                {{ recipe.content }}
+                            </p>
+
+                        </div>
+
+                        <p class="text-danger publication-date pb-0 pt-1 m-0">Publié le {{ recipe.publicationDate|date('d/m/Y') }}</p>
+
+                        <p class="btn pb-0 text-danger m-0">Par {{ recipe.author.pseudonym }}</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {# Similar recipe #}
+        <div class="row my-2 my-md-3 mt-4">
+
+            <h2 class="red-title col-12  py-3 my-md-3 pt-md-3">Recettes similaires</h2>
+
+
+            {% for recipe in recipe.mainCategory %}
+                <div class="same-recipe card mx-auto mb-3 pt-2" style="width: 18rem;">
+
+                    <img src="{{ asset('images/orange.jpg')|imagine_filter("similar_recipe") }}" class="card-img-top" alt="">
+
+                    <div class="card-body">
+                        <h4 class="fw-bold card-title text-center text-dark">{{ recipe.title }}</h4>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+
+
+        {# Comments part #}
+        <div class="row my-2 my-md-3 mt-4">
+
+            {# Title #}
+            <h2 id="comment-anchor-form" class="red-title col-12 py-3">Donner votre avis</h2>
+
+            {# Rating #}
+            <div class="col-12 col-lg-6 d-lg-flex justify-content-lg-center align-items-lg-center">
+                {% if app.user %}
+
+                {{ form_start( commentForm ) }}
+
+                {{ form_errors( commentForm ) }}
+
+                {{ form_row( commentForm.userRating ) }}
+
+                <h3 class="user-rating-title">Vous l'avez testée ? Donnez-lui une note :</h3>
+
+                <div class="smileys d-flex justify-content-around">
+
+                    <div class="d-flex flex-column align-items-center justify-content-around smiley-rating">
+                        <i class="match lar la-grimace" data-value="1"></i>
+                    </div>
+                    <div class="d-flex flex-column align-items-center justify-content-around smiley-rating">
+                        <i class="match lar la-meh" data-value="2"></i>
+                    </div>
+                    <div class="d-flex flex-column align-items-center justify-content-around smiley-rating">
+                        <i class="match lar la-smile" data-value="3"></i>
+                    </div>
+                    <div class="d-flex flex-column align-items-center justify-content-around smiley-rating">
+                        <i class="match lar la-grin" data-value="4"></i>
+                    </div>
+                    <div class="d-flex flex-column align-items-center justify-content-around smiley-rating">
+                        <i class="match lar la-grin-tongue-squint" data-value="5"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+            {# Comment form #}
+            <div class="col-12 col-lg-6 col-xl-5">
+
+                {{ form_row( commentForm.content ) }}
+
+            </div>
+
+            <div class="col-12 col-lg-6 offset-lg-3">
+
+                {{ form_row( commentForm.save ) }}
+
+                {{ form_end( commentForm ) }}
+
+            </div>
+
+           {% else %}
+               <p class="text-center text-danger mt-4 col-12">Vous devez <a href="{{ path('app_login') }}">vous connecter</a> pour laisser un commentaire !</p>
+           {% endif %}
+
+            {# User comments #}
+            <h2 id="comment-anchor-view" class="red-title py-3 col-12 mt-4">Commentaires ({{ recipe.comments|length }})</h2>
+
+            <div class="d-flex flex-column position-relative flex-lg-row" id="comment-scroll">
+
+                {% for comment in recipe.comments %}
+                    <div class="comment mt-3 p-2 pb-3 d-flex flex-column col-md-10 offset-md-1 mt-md-3 col-lg-6">
+
+                        <div class="w-100 comment-pic d-flex flex-row justify-content-between p-1">
+
+                            <div class="d-flex flex-column">
+                                <p class="mb-0 text-danger fw-bold fs-4">{{ comment.author.pseudonym }}</p>
+                                <p class="date-publish-comment mb-0 pt-2 ms-md-3">- {{ comment.publicationDate|date('d/m/Y') }} à {{ comment.publicationDate|date('H\\hi') }} -</p>
+                                {% if comment.userRating == 1 %}
+                                    <p class="text-light fs-6 pt-2 rating-in-comment"><i class="lar la-grimace text-danger"></i>Dégoutant</p>
+                                {% elseif  comment.userRating == 2 %}
+                                    <p class="text-light fs-6 pt-2 rating-in-comment"><i class="lar lar la-meh text-danger"></i>Mangeable</p>
+                                {% elseif  comment.userRating == 3 %}
+                                    <p class="text-light fs-6 pt-2 rating-in-comment"><i class="lar la-smile text-danger"></i>Bon</p>
+                                {% elseif  comment.userRating == 4 %}
+                                    <p class="text-light fs-6 pt-2 rating-in-comment"><i class="lar la-grin text-danger"></i>Délicieux</p>
+                                {% elseif  comment.userRating == 5 %}
+                                    <p class="text-light fs-6 pt-2 rating-in-comment"><i class="lar la-grin-tongue-squint text-danger"></i>Diabolique</p>
+                                {% endif %}
+                            </div>
+
+                            {% if app.user.pictureProfil is null %}
+
+                                <img src="{{ asset('images/profil-default.jpg')|imagine_filter("comment") }}" alt="" class="flex-shrink-0 me-0 img-fluid img-thumbnail">
+
+                            {% else %}
+
+                                <img src="{{ asset('images/profils/' ~ app.user.pictureProfil)|imagine_filter("comment") }}" alt="" class="flex-shrink-0 me-0 img-fluid img-thumbnail">
+
+                            {% endif %}
+
+                        </div>
+
+                        <div class="fs-5">
+                            {{ comment.content|nl2br }}
+                        </div>
+
+                        {% if (is_granted('ROLE_ADMIN')) %}
+                            <a href="{{ path('comment_delete', {'id': comment.id}) }}" class="delete-comment btn text-end mt-1">Supprimer<i class="fa-solid fa-delete-left ps-2 text-danger"></i></a>
+                        {% endif %}
+
+                    </div>
+
+                {% else %}
+
+                    <p class="col-12 text-center alert alert-warning">Soyez le premier à commenter !</p>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <footer class="row my-5 pt-2">
+            <a href="#" class="signal-recipe col-8 offset-2 fs-3 text-center">Signaler cette recette</a>
+        </footer>
+
+    </div>
+
+
+{% endblock %}

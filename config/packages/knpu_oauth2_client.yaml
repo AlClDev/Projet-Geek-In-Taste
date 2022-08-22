@@ -1,0 +1,12 @@
+# config/packages/knpu_oauth2_client.yaml
+knpu_oauth2_client:
+    clients:
+        google:
+            # type du client que l'on a installé
+            type: google
+            # correspond aux données renseigneés dans le fichier env.local
+            client_id: '%env(GOOGLE_CLIENT_ID)%'
+            client_secret: '%env(GOOGLE_CLIENT_SECRET)%'
+            # route de redirection après connection
+            redirect_route: connect_google_check
+            redirect_params: {}

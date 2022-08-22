@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        {# Profil header #}
+        <header class="row my-4">
+
+            {# Pseudonym #}
+            <section
+                    class="
+                    col-12
+                    col-xl-6 my-xl-auto"
+            >
+                <h1 class="profil-name text-center pb-3 pb-md-4">{{ app.user.pseudonym }}</h1>
+            </section>
+
+            {# Photo #}
+            <div class="profil-user-picture col-6 offset-3 pb-3 pb-md-4 col-lg-4 offset-lg-4 col-xl-4 offset-xl-2 mx-auto d-flex flex-column align-items-center">
+
+                {% if app.user.pictureProfil is null %}
+
+                    <img src="{{ asset('images/profil-default.jpg') }}" alt="" class="img-fluid img-thumbnail">
+
+                {% else %}
+
+                    <img src="{{ asset('images/profils/' ~ app.user.pictureProfil) }}" alt="" class="img-fluid img-thumbnail">
+
+                {% endif %}
+
+                <a href="{{ path('main_profils_parameter_edit_picture') }}" class="text-center text-decoration-none picture-text-style pt-2">Modifier votre photo de profil</a>
+
+            </div>
+
+        </header>
+
+        {# Personal information #}
+        <section class="row my-4">
+
+            <div class="user-info-profil col-10 offset-1 mb-3 col-md-8 offset-md-2 mb-md-5">
+
+                <p><span class="text-danger fw-bold text-decoration-underline">Mon pseudonyme :</span> {{ app.user.pseudonym }}</p>
+
+                <p><span class="text-danger fw-bold text-decoration-underline">Mon adresse email :</span> {{ app.user.email }}</p>
+
+                <p><span class="text-danger fw-bold text-decoration-underline">Ma date de naissance :</span> {{ app.user.birthDate|date("d/m/Y") }}</p>
+
+                <p><span class="text-danger fw-bold text-decoration-underline">Ma biographie :</span> {{ app.user.biography }}</p>
+
+            </div>
+
+        </section>
+
+        {# Account parameter #}
+        <nav class="row my-4 profil-link">
+
+            <div class="col-12 pb-3 col-md-10 offset-md-1 pb-md-4">
+
+                <p>Pour mettre à jour vos informations personnelles afin de sécuriser votre compte : </p>
+
+                <a href="{{ path('main_profils_parameter') }}" class="offset-1"><i class="fa-solid fa-user-gear"></i>Mes informations personnelles</a>
+
+            </div>
+
+        </nav>
+
+        {# My recipe #}
+        <nav class="row mt-4 profil-link">
+
+            <div class="col-12 pb-3 col-md-10 offset-md-1 pb-md-4">
+
+                <p>Pour visualiser et enrichir votre grimoire de recettes : </p>
+
+                <div class="d-flex flex-column">
+                    <a href="{{ path('main_profils_personal_recipe') }}" class="offset-1"><i class="fa-solid fa-book-bookmark"></i>Mes recettes</a>
+
+                    <a href="{{ path('app_recipe') }}" class="offset-1"><i class="fa-solid fa-book-medical"></i>Créer une recette</a>
+
+                    <a href="{{ path('main_contact') }}" class="offset-1"><i class="fa-solid fa-heart-circle-check"></i>Mes recettes préférées</a>
+                </div>
+
+            </div>
+
+        </nav>
+
+        {# Account statement #}
+        <nav class="row profil-link">
+
+            <div class="col-12 col-md-10 offset-md-1">
+
+                <p>Pour gérer l'état de votre compte :</p>
+
+                <div class="d-flex flex-column">
+                    {# Disconnection #}
+                    <a href="{{ path('app_logout') }}" class="offset-1"><i class="fa-solid fa-right-from-bracket"></i>Déconnexion</a>
+
+                    {# Delete account #}
+
+                    <a href="{{ path('main_profils_delete') }}" class="offset-1"><i class="fa-solid fa-folder-minus"></i>Supprimer mon compte</a>
+                </div>
+
+            </div>
+
+        </nav>
+
+
+    </div>
+
+{% endblock %}
+
+
+

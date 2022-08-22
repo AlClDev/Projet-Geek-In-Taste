@@ -1,0 +1,43 @@
+{# Route de la page actuelle#}
+{% set route = app.request.attributes.get('_route')%}
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+
+        {# Block Title #}
+        <title>{% block title %}{%endblock%} - Geek In Taste </title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {# Feuilles de styles #}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        {# Font - Awesome #}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
+        {# Fichiers JS #}
+        <script src="{{ asset(('js/bootstrap.bundle.min.js')) }}" defer></script>
+        {% block javascripts %}{% endblock %}
+        <script src="{{ asset(('js/scripts.js')) }}" defer></script>
+    </head>
+    <body>
+
+        {# Menu principal #}
+        {% include '_partials/_main_navbar.html.twig' %}
+
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v14.0" nonce="OG5E082Y"></script>
+
+        {# Inclusion des messages flashs #}
+        {% include '_partials/_flashes.html.twig' %}
+
+        {# Body #}
+        {% block body %}{% endblock %}
+
+        {# Footer #}
+        {% include '_partials/_main_footer.html.twig' %}
+    </body>
+</html>
